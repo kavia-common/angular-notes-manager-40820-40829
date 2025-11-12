@@ -13,13 +13,16 @@ import { Router } from '@angular/router';
       class="fab"
       [attr.title]="title"
       [attr.aria-label]="title"
+      [attr.aria-describedby]="'fab-help'"
       (click)="navigate()"
     >
       +
     </button>
+    <span id="fab-help" class="visually-hidden">Creates a new note</span>
   `,
   styles: [`
 :host { display: contents; }
+.visually-hidden { position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
 .fab {
   position: fixed;
   right: 20px;

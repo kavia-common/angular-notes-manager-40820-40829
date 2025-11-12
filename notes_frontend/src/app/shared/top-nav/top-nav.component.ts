@@ -128,6 +128,12 @@ export class TopNavComponent {
     return `Search notes input`;
   }
 
+  // PUBLIC_INTERFACE
+  setSearchValue(value: string): void {
+    /** Allows parent components to set the search input value programmatically. */
+    this.search = value ?? '';
+  }
+
   onSearchChange(value: string) {
     this.search = value ?? '';
     // Debounce can be added later if needed; emit immediately for now

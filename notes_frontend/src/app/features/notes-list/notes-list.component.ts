@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject, signal, computed } from '@angular/core';
-import { ActivatedRoute, Params, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { NoteCardComponent } from '../../shared/note-card/note-card.component';
 import { NotesStore } from '../../state/notes.store';
@@ -31,6 +31,8 @@ import { EventBusService } from '../../shared/event-bus.service';
           <app-note-card
             *ngFor="let n of filteredNotes()"
             [note]="n"
+            (view)="onView($event)"
+            (edit)="onEdit($event)"
             (delete)="onDelete($event)"
             (pin)="onPin($event)"
           ></app-note-card>
@@ -82,6 +84,7 @@ import { EventBusService } from '../../shared/event-bus.service';
 export class NotesListComponent implements OnInit, OnDestroy {
   private readonly store = inject(NotesStore);
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly bus = inject(EventBusService);
   private sub?: Subscription;
 
@@ -125,6 +128,18 @@ export class NotesListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+  }
+
+  // PUBLIC_INTERFACE
+  onView(note: Note): void {
+    /** Navigates to the note detail view. */
+    void this.router.navigate(['/notes', note.id]);
+  }
+
+  // PUBLIC_INTERFACE
+  onEdit(note: Note): void {
+    /** Navigates to the note edit view. */
+    void this.router.navigate(['/notes', note.id, 'edit']);
   }
 
   // PUBLIC_INTERFACE
