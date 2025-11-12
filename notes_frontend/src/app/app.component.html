@@ -1,14 +1,5 @@
-<!-- Top Navigation Bar Placeholder -->
-<header class="topnav">
-  <div class="topnav__brand">
-    <span class="topnav__logo">📝</span>
-    <span class="topnav__title">{{ title }}</span>
-  </div>
-  <nav class="topnav__actions">
-    <!-- Future: search, filters, profile -->
-    <button class="topnav__action" title="Menu" aria-label="Menu">≡</button>
-  </nav>
-</header>
+<!-- Top Navigation Bar -->
+<app-top-nav [title]="title" (searchChange)="onSearch($event)"></app-top-nav>
 
 <!-- Main Content Area -->
 <main class="app-main">
@@ -22,5 +13,5 @@
   <!-- toasts will be injected here -->
 </div>
 
-<!-- Floating Action Button Placeholder -->
-<button class="fab" title="Add note" aria-label="Add note" routerLink="/notes/new">+</button>
+<!-- Floating Action Button -->
+<app-fab></app-fab>
