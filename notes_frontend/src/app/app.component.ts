@@ -9,7 +9,7 @@ import { EventBusService } from './shared/event-bus.service';
   standalone: true,
   imports: [RouterOutlet, TopNavComponent, FabComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   // PUBLIC_INTERFACE
