@@ -40,12 +40,14 @@ app.get(
  */
 app.get('**', (req, res, next) => {
   const { protocol, originalUrl, baseUrl, headers } = req;
+  const host = headers.host || 'localhost:4000';
+  const safeProtocol = protocol || 'http';
 
   commonEngine
     .render({
       bootstrap,
       documentFilePath: indexHtml,
-      url: `${protocol}://${headers.host}${originalUrl}`,
+      url: `${safeProtocol}://${host}${originalUrl || '/'}`,
       publicPath: browserDistFolder,
       providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
     })

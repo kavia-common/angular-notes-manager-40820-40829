@@ -31,7 +31,7 @@ export const APP_CONFIG = new InjectionToken<AppConfig>('APP_CONFIG');
  */
 function readServerEnv(): Partial<AppConfig> {
   // Use bracket access to satisfy TypeScript for process.env on ESM builds.
-  const env = (globalThis as any)?.process?.env ?? {};
+  const env = (typeof globalThis !== 'undefined' && (globalThis as any)?.process?.env) ? (globalThis as any).process.env : {};
   return {
     apiBase: env['NG_APP_API_BASE'] || env['NG_APP_BACKEND_URL'],
     backendUrl: env['NG_APP_BACKEND_URL'],
@@ -54,7 +54,7 @@ function readServerEnv(): Partial<AppConfig> {
  */
 function browserDefaults(): AppConfig {
   const origin =
-    isBrowser() && globalThis.location ? globalThis.location.origin : '';
+    isBrowser() && typeof globalThis.location?.origin === 'string' ? globalThis.location.origin : '';
   return {
     apiBase: '/api',
     backendUrl: origin,
