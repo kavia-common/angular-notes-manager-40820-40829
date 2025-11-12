@@ -14,16 +14,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'angular' title`, () => {
+  it(`should have the 'Notes' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular');
+    expect(app.title).toEqual('Notes');
   });
 
-  it('should render title', () => {
+  it('should render top nav with title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular');
+    const el = fixture.nativeElement as HTMLElement;
+    // Top nav title should appear
+    expect(el.querySelector('.topnav__title')?.textContent).toContain('Notes');
   });
 });
