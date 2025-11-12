@@ -74,7 +74,8 @@
           "options": {
             "port": 3000,
             "host": "0.0.0.0",
-            "verbose": true
+            "verbose": true,
+            "browserTarget": "angular:build:development"
           }
         },
         "extract-i18n": {
