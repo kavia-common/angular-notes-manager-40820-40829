@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "NODE_ENV=development NG_CLI_ANALYTICS=false ng serve",
+    "start:stable": "npm run prewarm && NODE_ENV=development NG_CLI_ANALYTICS=false ng serve",
+    "prewarm": "NG_CLI_ANALYTICS=false ng build --configuration development --output-hashing=none",
     "build": "NG_CLI_ANALYTICS=false ng build",
     "watch": "NG_CLI_ANALYTICS=false ng build --watch=false --configuration development",
     "test": "NG_CLI_ANALYTICS=false CI=true ng test --watch=false --browsers=ChromeHeadless",
@@ -12,7 +14,7 @@
     "preview": "NG_CLI_ANALYTICS=false ng serve",
     "ci:prepare": "node -e \"console.log('Disable dev watches/tests for CI')\"",
     "ci:build": "NG_CLI_ANALYTICS=false ng build --configuration production",
-    "ci:serve": "NG_CLI_ANALYTICS=false ng serve"
+    "ci:serve": "NG_CLI_ANALYTICS=false npm run start:stable"
   },
   "dependencies": {
     "@angular/common": "19.2.1",

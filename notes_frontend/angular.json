@@ -74,7 +74,8 @@
           "options": {
             "port": 3000,
             "host": "0.0.0.0",
-            "hmr": true
+            "hmr": true,
+            "verbose": true
           }
         },
         "extract-i18n": {

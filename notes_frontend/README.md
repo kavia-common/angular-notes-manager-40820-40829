@@ -12,15 +12,26 @@ npm run preview
 npm start
 ```
 
-This starts on http://localhost:3000. The app auto-reloads on changes.
+For a more stable startup in CI or ephemeral preview environments (pre-warm dependency optimization), use:
+
+```bash
+npm run start:stable
+```
+
+This starts on http://localhost:3000 (binds to 0.0.0.0). The app auto-reloads on changes.
+
+Readiness/healthcheck:
+- Once the dev server is ready, a static healthcheck is available at: http://localhost:3000/healthz.txt (returns "ok").
+- Angular CLI dev server logs are started with verbose output to ensure readiness lines are printed.
 
 ## CI notes
 
 - Watchers and tests are disabled by default in CI scripts:
   - `npm run ci:prepare`
   - `npm run ci:build`
-  - `npm run ci:serve`
+  - `npm run ci:serve` (uses start:stable to avoid re-optimization loops)
 - Ensure a stable lockfile is present to avoid Vite re-optimization loops.
+- Do not run SSR (`serve:ssr:angular`) concurrently with the CSR dev server.
 
 ## Building
 

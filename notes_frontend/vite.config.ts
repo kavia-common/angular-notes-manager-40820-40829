@@ -15,6 +15,9 @@ export default defineConfig({
     ]
   },
   server: {
+    // Ensure consistent host/port (Angular dev-server proxies through Vite under the hood).
+    host: '0.0.0.0',
+    port: 3000,
     // Avoid frequent restarts by debouncing file change events
     watch: {
       awaitWriteFinish: {
@@ -23,4 +26,6 @@ export default defineConfig({
       }
     }
   },
+  // Quietly keep dependency pre-bundling stable
+  logLevel: 'info',
 });
