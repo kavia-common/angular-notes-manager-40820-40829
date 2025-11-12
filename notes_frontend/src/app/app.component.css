@@ -1,16 +1,128 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #ffffff;
+:root {
+  --op-primary: #2563EB;   /* Ocean Professional primary */
+  --op-secondary: #F59E0B; /* Accent / success */
+  --op-error: #EF4444;
+  --op-bg: #f9fafb;
+  --op-surface: #ffffff;
+  --op-text: #111827;
+  --op-muted: #6b7280;
+  --op-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --op-radius: 12px;
 }
 
-h1 {
-  color: #1976d2;
-  font-size: 3rem;
-  font-weight: 500;
-  margin: 0;
-  text-align: center;
+html, body, :host {
+  background: var(--op-bg);
+  color: var(--op-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Top navigation bar */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(255,255,255,0.9));
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: 1px solid rgba(37,99,235,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.topnav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topnav__logo {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(249,250,251,1));
+  color: var(--op-primary);
+  box-shadow: inset 0 0 0 1px rgba(37,99,235,0.2);
+}
+
+.topnav__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--op-text);
+}
+
+.topnav__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.topnav__action {
+  appearance: none;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: var(--op-surface);
+  color: var(--op-text);
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: var(--op-shadow);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.topnav__action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37,99,235,0.15);
+  border-color: rgba(37,99,235,0.25);
+}
+
+/* Main layout */
+.app-main {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.content-surface {
+  background: var(--op-surface);
+  border-radius: var(--op-radius);
+  box-shadow: var(--op-shadow);
+  min-height: 60vh;
+  padding: 20px;
+  border: 1px solid rgba(17,24,39,0.06);
+}
+
+/* Toast outlet placeholder */
+.toast-outlet {
+  position: fixed;
+  right: 16px;
+  bottom: 90px;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--op-primary), #3b82f6);
+  color: white;
+  font-size: 28px;
+  line-height: 1;
+  box-shadow: 0 10px 30px rgba(37,99,235,0.35);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+.fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(37,99,235,0.45);
 }

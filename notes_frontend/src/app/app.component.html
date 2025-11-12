@@ -1,3 +1,26 @@
-<div class="container">
-  <h1>{{ title }}</h1>
+<!-- Top Navigation Bar Placeholder -->
+<header class="topnav">
+  <div class="topnav__brand">
+    <span class="topnav__logo">📝</span>
+    <span class="topnav__title">{{ title }}</span>
+  </div>
+  <nav class="topnav__actions">
+    <!-- Future: search, filters, profile -->
+    <button class="topnav__action" title="Menu" aria-label="Menu">≡</button>
+  </nav>
+</header>
+
+<!-- Main Content Area -->
+<main class="app-main">
+  <section class="content-surface">
+    <router-outlet></router-outlet>
+  </section>
+</main>
+
+<!-- Toast Outlet Placeholder -->
+<div class="toast-outlet" role="region" aria-live="polite" aria-atomic="true">
+  <!-- toasts will be injected here -->
 </div>
+
+<!-- Floating Action Button Placeholder -->
+<button class="fab" title="Add note" aria-label="Add note" routerLink="/notes/new">+</button>
